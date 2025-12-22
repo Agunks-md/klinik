@@ -1,0 +1,40 @@
+╔══════════════════════════════════════════════════════════════╗
+║     CARA MEMPERBAIKI LIVEWIRE YANG TIDAK RENDER              ║
+╚══════════════════════════════════════════════════════════════╝
+
+🔴 MASALAH: Livewire belum terinstall di vendor folder
+
+✅ SOLUSI - Jalankan perintah ini BERURUTAN:
+
+1️⃣  INSTALL COMPOSER DEPENDENCIES:
+    composer install
+
+2️⃣  CLEAR CACHE:
+    php artisan config:clear
+    php artisan cache:clear
+    php artisan view:clear
+
+3️⃣  BUILD ASSETS (pilih salah satu):
+    
+    Opsi A - Production:
+    npm run build
+    
+    Opsi B - Development (disarankan):
+    npm run dev
+    (Biarkan terminal ini running)
+
+4️⃣  JALANKAN SERVER:
+    php artisan serve
+
+5️⃣  BUKA BROWSER:
+    http://localhost:8000/dashboard
+    
+    ⚠️  Hard refresh: Ctrl + Shift + R
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 CATATAN:
+- Pastikan database 'klinik' sudah dibuat di MySQL
+- Jika npm run dev, pastikan Vite dev server running
+- Jika masih error, cek browser console (F12)
+

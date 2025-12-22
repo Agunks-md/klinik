@@ -1,0 +1,62 @@
+╔══════════════════════════════════════════════════════════════╗
+║          CARA MEMPERBAIKI - IKUTI INI PERSIS                ║
+╚══════════════════════════════════════════════════════════════╝
+
+🔴 MASALAH: Livewire belum terinstall, jadi @livewire() jadi plain text
+
+✅ SOLUSI - Copy paste command ini SATU PER SATU di terminal:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. INSTALL COMPOSER (WAJIB!):
+   
+   composer install
+
+   ⏳ Tunggu sampai selesai (bisa 2-5 menit)
+   
+   ✅ Jika muncul "Package operations: X installs" = BERHASIL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. CLEAR CACHE:
+
+   php artisan config:clear
+   php artisan cache:clear
+   php artisan view:clear
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. BUILD ASSETS:
+
+   npm run build
+
+   ATAU untuk development:
+
+   npm run dev
+   (Biarkan terminal ini running, buka terminal baru untuk step 4)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. JALANKAN SERVER (terminal baru jika pakai npm run dev):
+
+   php artisan serve
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. BUKA BROWSER:
+
+   http://localhost:8000/dashboard
+   
+   Hard refresh: Ctrl + Shift + R
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  PASTIKAN:
+   - Database 'klinik' sudah dibuat di MySQL
+   - Composer ada di PATH system
+   - Node.js dan NPM sudah terinstall
+
+💡 TIP: Jika error "composer not found":
+   - Di Laragon, biasanya composer ada di: C:\laragon\bin\composer\composer.bat
+   - Atau install Composer secara global
+
