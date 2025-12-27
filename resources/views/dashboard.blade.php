@@ -1,16 +1,17 @@
-@extends('layouts.app')
-
-@section('title', 'Dashboard Pemantauan')
-
-@section('content')
-    <div class="mb-4">
-        <h2 class="mb-0">
-            <i class="fas fa-tachometer-alt me-2"></i>
-            Dashboard Pemantauan Ruang Pasien
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
         </h2>
-        <p class="text-muted">Sistem Pemantauan Real-time Menggunakan IoT</p>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    {{ __("You're logged in!") }}
+                </div>
+            </div>
+        </div>
     </div>
-
-    @livewire('patient-room-monitor')
-@endsection
-
+</x-app-layout>

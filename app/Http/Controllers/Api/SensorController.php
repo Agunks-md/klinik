@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Room;
 use App\Models\SensorReading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class SensorController extends Controller
 {
-    /**
-     * Store sensor data from IoT device
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -24,18 +20,15 @@ class SensorController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation error',
                 'errors' => $validator->errors()
             ], 422);
         }
 
-        // Determine status and fire detection
         $statusData = SensorReading::determineStatus(
             $request->temperature,
             $request->smoke_density
         );
 
-        // Create sensor reading
         $reading = SensorReading::create([
             'room_id' => $request->room_id,
             'temperature' => $request->temperature,
@@ -47,32 +40,17 @@ class SensorController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Sensor data stored successfully',
-            'data' => $reading,
-            'alert' => $statusData['fire_detected'] ? 'FIRE_DETECTED' : ($statusData['status'] === 'warning' ? 'WARNING' : 'OK')
+            'data' => $reading
         ], 201);
     }
 
-    /**
-     * Get latest sensor data for a room
-     */
     public function latest($roomId)
     {
-        $reading = SensorReading::where('room_id', $roomId)
-            ->latest()
-            ->first();
-
-        if (!$reading) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No sensor data found for this room'
-            ], 404);
-        }
+        $reading = SensorReading::where('room_id', $roomId)->latest()->first();
 
         return response()->json([
-            'success' => true,
+            'success' => (bool) $reading,
             'data' => $reading
         ]);
     }
 }
-
